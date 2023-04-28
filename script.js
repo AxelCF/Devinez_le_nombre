@@ -71,3 +71,61 @@ function resetGame() {
 
   randomNumber = Math.floor(Math.random() * 100) + 1;
 }
+
+var list = document.querySelector(".output ul");
+list.innerHTML = "";
+var greetings = [
+  "Happy Birthday!",
+  "Merry Christmas my love",
+  "A happy Christmas to all the family",
+  "You're all I want for Christmas",
+  "Get well soon",
+];
+
+for (var i = 0; i < greetings.length; i++) {
+  var input = greetings[i];
+  if (greetings[i].indexOf("Christmas") !== -1) {
+    var result = input;
+    var listItem = document.createElement("li");
+    listItem.textContent = result;
+    list.appendChild(listItem);
+  }
+}
+
+var list = document.querySelector(".outputsecond ul");
+list.innerHTML = "";
+var cities = ["lonDon", "ManCHESTer", "BiRmiNGHAM", "liVERpoOL"];
+for (var i = 0; i < cities.length; i++) {
+  var input = cities[i];
+  let lowerCase = input.toLowerCase();
+  let firstLetter = lowerCase[0].toUpperCase();
+  let update = lowerCase.replace(lowerCase[0], firstLetter);
+  var result = update;
+  var listItem = document.createElement("li");
+  listItem.textContent = result;
+  list.appendChild(listItem);
+}
+
+var list = document.querySelector(".outputthird ul");
+list.innerHTML = "";
+var stations = [
+  "MAN675847583748sjt567654;Manchester Piccadilly",
+  "GNF576746573fhdg4737dh4;Greenfield",
+  "LIV5hg65hd737456236dch46dg4;Liverpool Lime Street",
+  "SYB4f65hf75f736463;Stalybridge",
+  "HUD5767ghtyfyr4536dh45dg45dg3;Huddersfield",
+];
+
+for (var i = 0; i < stations.length; i++) {
+  var input = stations[i];
+  // write your code just below here
+  let three = input.slice(0, 3);
+  let found = input.indexOf(";");
+  let station = input.slice(found + 1);
+  let final = three + ": " + station;
+  console.log(final);
+  var result = final;
+  var listItem = document.createElement("li");
+  listItem.textContent = result;
+  list.appendChild(listItem);
+}
