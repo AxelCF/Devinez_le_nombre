@@ -35,7 +35,18 @@
       <p class="lastResult"></p>
       <p class="lowOrHi"></p>
     </div>
-
+    <div class="form">
+      <label for="guessText">Entrer votre réponse: </label>
+      <input
+        type="text"
+        min="1"
+        max="100"
+        required
+        id="guessText"
+        class="guessText"
+      />
+      <input type="submit" value="check" class="textSubmit" />
+    </div>
     <div class="output">
       <ul></ul>
     </div>
@@ -46,6 +57,11 @@
 
     <div class="outputthird">
       <ul></ul>
+    </div>
+
+    <div class="outputfourth">
+      <ul></ul>
+      <p></p>
     </div>
 
     <script src="script.js"></script>
