@@ -143,33 +143,71 @@ var total = 0;
 list.innerHTML = "";
 totalBox.textContent = "";
 // number1
-let products =
-  "Caleçons:6.99,Chaussettes:5.99,T-shirt:14.99,Pantalons:31.99,Chaussures:23.99";
+let products = [
+  "Caleçons:6.99",
+  "Chaussettes:5.99",
+  "T-shirt:14.99",
+  "Pantalons:31.99",
+  "Chaussures:23.99",
+];
 
-let myNewArray = products.split(":");
-console.log(myNewArray);
-let myNewArray1 = myNewArray.toString();
-let myNewArray2 = myNewArray1.split(",");
-// let stringToNumber = Number(myNewArray2);
-console.log(myNewArray2);
-
-for (var i = 0; i < products; i++) {
+for (let i = 0; i < products.length; i++) {
   // number 2
-  let myNewArray = products.split(":");
-  let myNewArray1 = myNewArray.toString();
-  let myNewArray2 = myNewArray1.split(",");
-  let myNewArray3 = Number(myNewArray2);
 
   // number 3
+  let subArray = products[i].split(":");
+  let name = subArray[0];
+  let price = Number(subArray[1]);
+  total += price;
 
   // number 4
 
   // number 5
-  itemText = 0;
+  itemText = name + " - " + price + " €";
 
-  var listItem = document.createElement("li");
+  let listItem = document.createElement("li");
   listItem.textContent = itemText;
   list.appendChild(listItem);
 }
 
-totalBox.textContent = "Total: $" + total.toFixed(2);
+totalBox.textContent = "Total:" + total.toFixed(2) + "€";
+
+// Top 5 des recherches
+
+let liste = document.querySelector(".outputfive ul");
+let searchInput = document.querySelector(".outputfive input");
+let searchBtn = document.querySelector(".outputfive button");
+
+liste.innerHTML = "";
+
+let myHistory = [];
+
+searchBtn.onclick = function () {
+  // we will only allow a term to be entered if the search input isn't empty
+  if (searchInput.value !== "") {
+    // number 1
+    myHistory.unshift(searchInput.value);
+    console.log(myHistory);
+    // empty the liste so that we don't display duplicate entries
+    // the display is regenerated every time a search term is entered.
+    liste.innerHTML = "";
+
+    // loop through the array, and display all the search terms in the liste
+    for (let i = 0; i < myHistory.length; i++) {
+      itemText = myHistory[i];
+      let listItem = document.createElement("li");
+      listItem.textContent = itemText;
+      liste.appendChild(listItem);
+    }
+
+    // If the array length is 5 or more, remove the oldest search term
+    if (myHistory.length >= 5) {
+      // number 2
+      myHistory.pop();
+    }
+
+    // empty the search input and focus it, ready for the next term to be entered
+    searchInput.value = "";
+    searchInput.focus();
+  }
+};
